@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="stylesheet" href="style.css" />
     <title>Valentine Letter</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,21 +13,21 @@
       href="https://fonts.googleapis.com/css2?family=Aldrich&family=Pixelify+Sans:wght@400..700&display=swap"
       rel="stylesheet"
     />
-    <title>Document</title>
   </head>
+
   <body>
     <!-- Envelope Screen -->
-    <div id="envelope-container">
-      <img src="envelope.png" alt="Envelope" id="envelope" />
-      <p>💝 Lettera per la bimba 💝</p>
+    <div id="envelope-container" role="button" aria-label="Apri la busta">
+      <img src="envelope.png" alt="Busta" id="envelope" />
+      <p class="subtitle">💝 Lettera per la bimba 💝</p>
     </div>
 
     <!-- Letter Screen -->
     <div id="letter-container">
-      <div class="letter-window">
+      <div class="letter-window" role="dialog" aria-modal="true">
         <h1 id="letter-title">Vuoi essere la mia valentina da qui in avanti?</h1>
 
-        <img src="breath.gif" class="cat" id="letter-cat" />
+        <img src="breath.gif" class="cat" id="letter-cat" alt="Kodino" />
 
         <div class="buttons" id="letter-buttons">
           <img src="yes.png" class="btn yes-btn" alt="Yes" />
@@ -41,6 +42,7 @@
         </p>
       </div>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>
