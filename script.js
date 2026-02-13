@@ -9,6 +9,9 @@ const catImg = document.getElementById("letter-cat");
 const buttons = document.getElementById("letter-buttons");
 const finalText = document.getElementById("final-text");
 
+let noScale = 1;
+let yesScale = 1;
+
 // Click Envelope
 
 envelope.addEventListener("click", () => {
@@ -20,27 +23,26 @@ envelope.addEventListener("click", () => {
     },50);
 });
 
-// Logic to move the NO btn
 
-noBtn.addEventListener("mouseover", () => {
-    const min =  25;
-    const max = 25;
 
-    const dist = Math.random() * (max - min) + min;
-    const ang = Math.random() * Math.PI * 2;
 
-    const moveX = Math.cos(ang) * dist;
-    const moveY = Math.sin(ang) * dist;
 
-    noBtn.style.transition = "transform 0.3s ease";
-    noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+noBtn.addEventListener("click", () => {
+    // Riduci NO
+    noScale -= 0.15;
+
+    noBtn.style.transform = `scale(${noScale})`;
+
+    // Ingrandisci YES
+    yesScale += 0.4;
+    yesBtn.style.transform = `scale(${yesScale})`;
 });
 
-
 yesBtn.addEventListener("click", () => {
-    title.textContent = "ziiiiiiiiiiiii!";
+    title.innerHTML = "SHIIIIIIIII, T'AMOOOOO 💝<br>Guarda, anche Kodino è contento!";
 
     catImg.src = "koda.gif";
+    catImg.style.width = "180px";
 
     document.querySelector(".letter-window").classList.add("final");
 
