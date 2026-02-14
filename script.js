@@ -11,6 +11,8 @@ const finalText = document.getElementById("final-text");
 
 const letterWindow = document.querySelector(".letter-window");
 
+const music = document.getElementById("bg-music");
+let musicStarted = false;
 // Scale state
 let noScale = 1;
 let yesScale = 1;
@@ -34,12 +36,29 @@ function applyYesTransform() {
 
 // Open letter
 envelope.addEventListener("click", () => {
-  envelope.style.display = "none";
-  letter.style.display = "flex";
+    envelope.style.display = "none";
+    letter.style.display = "flex";
 
-  setTimeout(() => {
-    letterWindow.classList.add("open");
-  }, 50);
+    if (!musicStarted) {
+        music.volume = 0;
+        music.play().then(() => {
+            let vol = 0;
+            const fadeIn = setInterval(() => {
+                if (vol < 0.4) {
+                    vol += 0.02;
+                    music.volume = vol;
+                } else {
+                    clearInterval(fadeIn);
+                }
+            }, 200);
+        }).catch(() => {});
+
+        musicStarted = true;
+    }
+
+    setTimeout(() => {
+        document.querySelector(".letter-window").classList.add("open");
+    }, 50);
 });
 
 // NO: su mobile non esiste mouseover, quindi usiamo pointerenter + pointerdown
@@ -80,7 +99,15 @@ noBtn.addEventListener("click", (e) => {
 
 yesBtn.addEventListener("click", () => {
   title.innerHTML = "SHIIIIIIIII, T'AMOOOOO 💝<br>Guarda, anche Kodino è contento!";
-
+    let boostVol = music.volume;
+    const boost = setInterval(() => {
+    if (boostVol < 0.6) {
+        boostVol += 0.02;
+        music.volume = boostVol;
+    } else {
+        clearInterval(boost);
+    }
+    }, 150);
   catImg.src = "koda.gif";
 
   // lascia che il CSS gestisca le dimensioni su mobile
