@@ -44,8 +44,8 @@ envelope.addEventListener("click", () => {
         music.play().then(() => {
             let vol = 0;
             const fadeIn = setInterval(() => {
-                if (vol < 0.4) {
-                    vol += 0.02;
+                if (vol < 0.05) {
+                    vol += 0.01;
                     music.volume = vol;
                 } else {
                     clearInterval(fadeIn);
@@ -101,13 +101,13 @@ yesBtn.addEventListener("click", () => {
   title.innerHTML = "SHIIIIIIIII, T'AMOOOOO 💝<br>Guarda, anche Kodino è contento!";
     let boostVol = music.volume;
     const boost = setInterval(() => {
-    if (boostVol < 0.6) {
-        boostVol += 0.02;
+    if (boostVol < 0.8) {
+        boostVol += 0.10;
         music.volume = boostVol;
     } else {
         clearInterval(boost);
     }
-    }, 150);
+    }, 120);
   catImg.src = "koda.gif";
 
   // lascia che il CSS gestisca le dimensioni su mobile
